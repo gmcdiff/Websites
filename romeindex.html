@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rome</title>
+    <link rel="stylesheet" href="romestyles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="notebook">
+        <canvas id="canvas" class="canvas"></canvas>
+        <div class="paper">
+            <h2 class="itinerary-title">3-Day Itinerary to Rome</h2>
+            <p class="note">(Note: Left button mouse to draw)</p>
+            <p class="handwritten-text">
+                Day 1: Explore Ancient Rome<br>
+                Start your day with a visit to the Colosseum, one of Rome's most iconic landmarks. Then, wander through
+                the Roman Forum, where you can immerse yourself in the history of ancient Rome. In the afternoon, visit
+                the Pantheon and marvel at its impressive dome. End your day with a stroll through the charming streets
+                of Trastevere and enjoy a traditional Italian dinner at one of the local trattorias.<br><br>
+
+                Day 2: Vatican City and Renaissance Marvels<br>
+                Begin your day with a tour of Vatican City, including St. Peter's Basilica and the Vatican Museums, home
+                to masterpieces such as Michelangelo's Sistine Chapel ceiling. Afterward, cross the river to explore the
+                beautiful Piazza Navona and admire Bernini's Fountain of the Four Rivers. In the evening, head to the
+                Spanish Steps area for shopping and dining.<br><br>
+
+                Day 3: Baroque Rome and Hidden Gems<br>
+                Spend your final day in Rome exploring the city's Baroque treasures. Visit the magnificent Trevi
+                Fountain and toss a coin to ensure your return to Rome. Then, wander through the picturesque streets of
+                the historic center, stopping to admire landmarks such as the Pantheon and Piazza Venezia. Don't miss
+                the chance to visit lesser-known attractions like the Capuchin Crypt or the Aventine Keyhole for unique
+                perspectives of the city.
+            </p>
+        </div>
+    </div>
+    <script>
+
+        window.onload = function () {
+            var canvas = document.getElementById('canvas');
+            var context = canvas.getContext('2d');
+
+            // Function to set canvas size based on window dimensions
+            function setCanvasSize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+
+            // Set canvas size initially
+            setCanvasSize();
+
+            var isDrawing = false;
+
+            // Event listener for mouse down event
+            canvas.addEventListener('mousedown', function (event) {
+                isDrawing = true;
+                context.beginPath();
+                context.moveTo(event.pageX, event.pageY);
+            });
+
+            // Event listener for mouse move event
+            canvas.addEventListener('mousemove', function (event) {
+                if (isDrawing) {
+                    context.lineTo(event.pageX, event.pageY);
+                    context.stroke();
+                }
+            });
+
+            // Event listener for mouse up event
+            canvas.addEventListener('mouseup', function () {
+                isDrawing = false;
+            });
+
+            // Event listener for mouse out event
+            canvas.addEventListener('mouseout', function () {
+                isDrawing = false;
+            });
+
+            // Listen for fullscreen change event
+            document.addEventListener("fullscreenchange", function () {
+                if (document.fullscreenElement) {
+                    // If entering fullscreen, update canvas size
+                    setCanvasSize();
+                }
+            });
+
+            // Listen for window resize event to handle canvas resizing
+            window.addEventListener('resize', function () {
+                // Update canvas size on window resize
+                setCanvasSize();
+            });
+        };
+
+    </script>
+</body>
+
+</html>

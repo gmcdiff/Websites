@@ -1,0 +1,45 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fc;
+    /* Light background color */
+    padding: 0;
+
+}
+
+.background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    /* Ensure the video is behind other content */
+}
+
+
+div#exercise-list {
+    max-width: 800px;
+    margin: 20px auto;
+    /* Center the list horizontally */
+    padding: 20px;
+    background-color: #fff;
+    /* White background */
+    border-radius: 10px;
+    /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Box shadow for depth */
+}
+
+div#exercise-header {
+    max-width: 800px;
+    margin: 20px auto;
+    /* Center the list horizontally */
+    padding: 20px;
+    background-color: #fff;
+    /* White background */
+    border-radius: 10px;
+    /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Box shadow for depth */
+}

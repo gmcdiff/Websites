@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fetched Exercises</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='gymexercises.css') }}">
+</head>
+
+<body>
+  <video autoplay loop muted class="background-video">
+    <source src="static\David Goggins Don t Be A B____.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <div id="exercise-header"></div>
+  <div id="exercise-list"></div>
+  <script>
+    // Extract URL parameters
+    const params = new URLSearchParams(window.location.search);
+    const type = params.get('type');
+    const area = params.get('area');
+    const level = params.get('level');
+
+    function capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
+    // Fetch exercises based on the criteria
+    fetch(`/fetch_exercises?type=${type}&area=${area}&level=${level}`)
+      .then(response => response.json())
+      .then(data => {
+        const exercises = data.exercises; // Define exercises within the scope
+        console.log(exercises);
+        if (exercises.length === 0) {
+          console.log('No exercises found.'); // Log a message if no exercises are returned
+        } else {
+          // Display fetched exercises on the page
+          const exerciseHeader = document.getElementById('exercise-header');
+          const exerciseList = document.getElementById('exercise-list')
+          // Display type - area - level details at the top
+          exerciseHeader.textContent = `(3x10ea) ${capitalizeFirstLetter(level)} ${area} workout with ${type}`;
+
+
+          // Create a single div for all exercises
+          //const exercisesContainer = document.createElement('div');
+
+          // Iterate over each exercise
+          exercises.forEach(exercise => {
+            // Create a div element for each exercise
+
+            // Extract exercise details from the array
+            const name = exercise[0];
+            const link = exercise[4].split('Info: ')[1]; // Extract the link from the fifth element
+
+            // Create a span element for the exercise name
+            const exerciseName = document.createElement('span');
+            exerciseName.textContent = name;
+
+            // Create an anchor element for the exercise link
+            const exerciseLink = document.createElement('a');
+            exerciseLink.href = link;
+            exerciseLink.textContent = 'Tutorial'; // You can customize the text here if needed
+
+            /// Append the name and link elements to the container
+            exerciseList.appendChild(exerciseName);
+            exerciseList.appendChild(document.createTextNode(' - ')); // Add separator
+            exerciseList.appendChild(exerciseLink);
+
+            // Add a line break between exercises
+            exerciseList.appendChild(document.createElement('br'));
+
+
+          });
+          // Add the list container to the document body
+
+        }
+      })
+      .catch(error => console.error('Error fetching exercises:', error));
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+body {
+    margin: 0;
+    padding: 0;
+    /* overflow: hidden;  Prevent scrollbars */
+    background-image: url('tripmedia/pexels-ena-marinkovic-3768083.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.notebook {
+    position: relative;
+    /* Ensure positioning context for canvas and paper */
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    /* Remove any padding that may cause extra space */
+    margin: 0;
+    /* Remove any margin that may cause extra space */
+}
+
+.canvas {
+    position: absolute;
+    /* Position canvas relative to the notebook */
+    top: 0;
+    left: 0;
+
+    z-index: 1;
+    /* Ensure canvas is above other content */
+    background-color: transparent;
+    /* Make canvas transparent */
+    /*cursor: url('https://png.pngtree.com/png-vector/20190927/ourmid/pngtree-pencil-icon-png-image_1753753.jpg'), auto;  Specify the cursor image and fallback to default cursor */
+}
+
+.paper {
+    position: relative;
+    z-index: 0;
+    padding: 20px;
+    background-color: #f7f7f7;
+    /* Set background color to resemble paper */
+    background-image: linear-gradient(to bottom, #cce0ff 1px, transparent 1px);
+    /* Create blue lines */
+    background-size: 100% 24px;
+    /* Set line spacing */
+    line-height: 1.5;
+    overflow-y: auto;
+    border-radius: 15px;
+
+}
+
+.itinerary-title {
+    font-family: 'Caveat';
+    font-size: 24px;
+    /* Adjust the font size as needed */
+    font-weight: bold;
+    /* Make the title bold */
+    text-align: center;
+    /* Center-align the title */
+}
+
+.note {
+    font-size: 16px;
+    /* Adjust the font size as needed */
+    text-align: center;
+    /* Center-align the text */
+    font-family: 'Caveat';
+}
+
+.handwritten-text {
+    font-family: 'Caveat';
+    /* Handwritten-style font */
+    font-size: 18px;
+    line-height: 1.5;
+    margin: 0;
+    /* Reset margin */
+}
+
+/* Add these media queries to your existing CSS */
+
+/* For tablets and smaller devices */
+@media only screen and (max-width: 768px) {
+    .notebook {
+        height: 100%;
+        /* Allow height to adjust based on content */
+        width: 100%;
+    }
+
+    .canvas {
+        width: 100%;
+        /* Make canvas width 100% of its container */
+        height: 100%;
+        /* Adjust canvas height as needed for smaller screens */
+    }
+
+    .itinerary-title {
+        font-size: 20px;
+        /* Adjust title font size for smaller screens */
+    }
+
+    .handwritten-text {
+        font-size: 16px;
+        /* Adjust text font size for smaller screens */
+    }
+}
+
+/* For mobile devices */
+@media only screen and (max-width: 480px) {
+    .handwritten-text {
+        font-size: 14px;
+        /* Further reduce text font size for smaller screens */
+    }
+
+}
+
+/* For larger screens */
+@media only screen and (min-width: 1200px) {
+    .notebook {
+        height: auto;
+        /* Allow height to adjust based on content */
+    }
+
+    .paper {
+        max-width: 1000px;
+        /* Limit paper width for larger screens */
+        margin: 0 auto;
+        /* Center paper horizontally */
+    }
+
+    .itinerary-title {
+        font-size: 32px;
+        /* Increase title font size for larger screens */
+    }
+
+    .handwritten-text {
+        font-size: 20px;
+        /* Increase text font size for larger screens */
+    }
+}

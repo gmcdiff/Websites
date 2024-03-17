@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workout Planner</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='gymstyles.css') }}">
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <header>
+
+    <div class="navbar">
+        <a href="#" class="action_btn">Menu</a>
+        <div class="toggle_btn">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+        <!--
+        <ul class="links">
+            <li><a href="#hero" data-value="Home">Home</a></li>
+            <li><a href="#info" data-value="Information">Information</a></li>
+        </ul>
+        -->
+        <div class="logo">
+            <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
+                    data-value="Go home">Get big</a></li>
+        </div>
+    </div>
+    <div class="dropdown_menu">
+        <li><a href="tripindex.html" data-value="Itineraries">Itineraries</a></li>
+        <li><a href="recipesindex.html" data-value="Cuisine">Cuisine</a></li>
+        <li><a href="templates\gymindex.html" data-value="Workout">Workout</a></li>
+        <li><a href="#hero" class="action_btn" data-value="Landing Page">Landing Page</a></li>
+    </div>
+
+</header>
+  <div class="container">
+    <div class="pulse-effect" id="pulseEffect">
+      <img src="static\heart_2864298.png" alt="Heart" width="30" height="30">
+    </div>
+    <video autoplay loop muted class="background-video">
+      <source src="static\They Don't Know Me Son _ David Goggins - Trim.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="content">
+      <div class="intro-text">
+        <h1>Ditch the trainer</h1>
+        <p>Stay hard.</p>
+      </div>
+      <div class="selection-section">
+        <div class="selection">
+          <label for="type">Type:</label>
+          <select id="type">
+            <option value="bodyweight">Bodyweight</option>
+            <option value="equipment">Equipment</option>
+          </select>
+        </div>
+        <div class="selection">
+          <label for="area">Area:</label>
+          <select id="area">
+            <option value="chest-triceps">Chest/Triceps</option>
+            <option value="back-biceps">Back/Biceps</option>
+            <option value="legs">Legs</option>
+            <option value="abs">Core/Shoulders</option>
+            <option value="fullbody">Full Body</option>
+          </select>
+        </div>
+        <!--
+        <div class="selection">
+          <label for="subarea">SubArea:</label>
+          <select id="subarea">
+            <option value="triceps">Triceps</option>
+            <option value="biceps">Biceps</option>
+            <option value="core">Core</option>
+            <option value="shoulders">Shoulders</option>
+            <option value="abs">Full Body</option>
+          </select>
+        </div> -->
+        <div class="selection">
+          <label for="level">Level:</label>
+          <select id="level">
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+          </select>
+        </div>
+        <button id="submit-btn">Workout</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    const toggleBtn = document.querySelector('.toggle_btn')
+    const toggleBtnIcon = document.querySelector('.toggle_btn i')
+    const dropDownMenu = document.querySelector('.dropdown_menu')
+
+    toggleBtn.onclick = function () {
+        dropDownMenu.classList.toggle('open')
+        const isOpen = dropDownMenu.classList.contains('open')
+        toggleBtnIcon.classList = isOpen
+            ? 'fa-solid fa-xmark'
+            : 'fa-solid fa-bars'
+    }
+</script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('submit-btn').addEventListener('click', function (event) {
+        // Collect selected values from dropdown menus
+        const type = document.getElementById('type').value;
+        const area = document.getElementById('area').value;
+        const level = document.getElementById('level').value;
+
+        // Redirect to a new page with the selected criteria as URL parameters
+        window.location.href = `\gymexercises.html?type=${type}&area=${area}&level=${level}`;
+      });
+    });
+  </script>
+  <script>
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+    // Add event listeners to all <a> elements inside <li> elements
+    document.querySelectorAll("li > a").forEach(link => {
+        // Initialize interval variable for each link
+        let interval = null;
+
+        // Add mouseover event listener to each link
+        link.addEventListener('mouseover', event => {
+            let iteration = 0;
+
+            // Clear any existing intervals to prevent multiple animations
+            clearInterval(interval);
+
+            // Start a new interval for the animation
+            interval = setInterval(() => {
+                // Modify the text content of the link during each iteration
+                event.target.innerText = event.target.innerText
+                    .split("")
+                    .map((letter, index) => {
+                        // Replace letters with corresponding letters from dataset value
+                        if (index < iteration) {
+                            return event.target.dataset.value[index];
+                        }
+
+                        // Randomly select letters if animation is still ongoing
+                        return letters[Math.floor(Math.random() * 26)];
+                    })
+                    .join("");
+
+                // Stop the animation when all letters have been replaced
+                if (iteration >= event.target.dataset.value.length) {
+                    clearInterval(interval);
+                }
+
+                // Increment the iteration counter for smoother animation
+                iteration += 1 / 3;
+            }, 40);
+        });
+    });
+</script>
+  <script>
+    // Get reference to the pulse effect element
+    const pulseEffect = document.getElementById('pulseEffect');
+
+    // Function to handle mouse movement
+    function handleMouseMove(event) {
+      // Get mouse coordinates
+      const mouseX = event.clientX;
+      const mouseY = event.clientY;
+
+      // Position the pulse effect element at the mouse coordinates
+      pulseEffect.style.left = mouseX + 'px';
+      pulseEffect.style.top = mouseY + 'px';
+
+      // Add pulse class to the pulse effect element
+      pulseEffect.classList.add('pulse');
+    }
+
+    // Function to handle mouse leave
+    function handleMouseLeave() {
+      // Remove pulse class when mouse leaves the container
+      pulseEffect.classList.remove('pulse');
+    }
+
+    // Attach mousemove event listener to the document
+    document.addEventListener('mousemove', handleMouseMove);
+
+    // Attach mouseleave event listener to the container
+    document.querySelector('.container').addEventListener('mouseleave', handleMouseLeave);
+  </script>
+</body>
+
+</html>

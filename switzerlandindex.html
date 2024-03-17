@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switzerland</title>
+    <link rel="stylesheet" href="switzerlandstyles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="notebook">
+        <canvas id="canvas" class="canvas"></canvas>
+        <div class="paper">
+            <h2 class="itinerary-title">3-Day Itinerary to Switzerland</h2>
+            <p class="note">(Note: Left button mouse to draw)</p>
+            <p class="handwritten-text">
+                Day 1: Alpine Adventure in Interlaken<br>
+                Start your journey in Interlaken, a gateway to the stunning Swiss Alps. Spend the day exploring the
+                picturesque town nestled between Lake Thun and Lake Brienz. Take a scenic train ride to Jungfraujoch,
+                known as the "Top of Europe," and marvel at breathtaking views of snow-capped peaks and glaciers. Don't
+                miss the opportunity to try outdoor activities like hiking, paragliding, or skiing.<br><br>
+
+                Day 2: Lucerne and Mount Pilatus<br>
+                Head to Lucerne, a charming city surrounded by mountains and situated on the shores of Lake Lucerne.
+                Explore the well-preserved Old Town, featuring landmarks like the Chapel Bridge and Water Tower. Take a
+                boat cruise on Lake Lucerne to admire the stunning scenery. In the afternoon, embark on an unforgettable
+                journey to Mount Pilatus via the world's steepest cogwheel railway or cable car. Enjoy panoramic views
+                from the summit and indulge in Swiss cuisine at one of the mountain restaurants.<br><br>
+
+                Day 3: Scenic Train Ride to Zermatt<br>
+                Conclude your Swiss adventure with a scenic train ride to Zermatt, home to the iconic Matterhorn
+                mountain. Relax onboard the Glacier Express, known as the "world's slowest express train," and soak in
+                breathtaking views of alpine landscapes, charming villages, and towering peaks. Upon arrival in Zermatt,
+                explore the car-free village, stroll along the Bahnhofstrasse, and savor traditional Swiss dishes with
+                a backdrop of the majestic Matterhorn.
+            </p>
+        </div>
+    </div>
+    <script>
+
+        window.onload = function () {
+            var canvas = document.getElementById('canvas');
+            var context = canvas.getContext('2d');
+
+            // Function to set canvas size based on window dimensions
+            function setCanvasSize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+
+            // Set canvas size initially
+            setCanvasSize();
+
+            var isDrawing = false;
+
+            // Event listener for mouse down event
+            canvas.addEventListener('mousedown', function (event) {
+                isDrawing = true;
+                context.beginPath();
+                context.moveTo(event.pageX, event.pageY);
+            });
+
+            // Event listener for mouse move event
+            canvas.addEventListener('mousemove', function (event) {
+                if (isDrawing) {
+                    context.lineTo(event.pageX, event.pageY);
+                    context.stroke();
+                }
+            });
+
+            // Event listener for mouse up event
+            canvas.addEventListener('mouseup', function () {
+                isDrawing = false;
+            });
+
+            // Event listener for mouse out event
+            canvas.addEventListener('mouseout', function () {
+                isDrawing = false;
+            });
+
+            // Listen for fullscreen change event
+            document.addEventListener("fullscreenchange", function () {
+                if (document.fullscreenElement) {
+                    // If entering fullscreen, update canvas size
+                    setCanvasSize();
+                }
+            });
+
+            // Listen for window resize event to handle canvas resizing
+            window.addEventListener('resize', function () {
+                // Update canvas size on window resize
+                setCanvasSize();
+            });
+        };
+
+    </script>
+</body>
+
+</html>
