@@ -283,7 +283,7 @@ section#featured-destinations {
 }
 
 .explore-itineraries {
-    background-image: url('tripmedia/image.png');
+    background-image: url('../tripmedia/image.png');
     /* Replace 'background.jpg' with your actual background image */
     background-size: cover;
     background-position: center;

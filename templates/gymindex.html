@@ -5,47 +5,49 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Workout Planner</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='gymstyles.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/gymstyles.css') }}">
   <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 
 <body>
   <header>
 
     <div class="navbar">
-        <a href="#" class="action_btn">Menu</a>
-        <div class="toggle_btn">
-            <i class="fa-solid fa-bars"></i>
-        </div>
-        <!--
+      <a href="#" class="action_btn">Menu</a>
+      <div class="toggle_btn">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+      <!--
         <ul class="links">
             <li><a href="#hero" data-value="Home">Home</a></li>
             <li><a href="#info" data-value="Information">Information</a></li>
         </ul>
         -->
-        <div class="logo">
-            <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
-                    data-value="Go home">Get big</a></li>
-        </div>
+      <div class="logo">
+        <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" data-value="Go home">Get big</a>
+        </li>
+      </div>
     </div>
     <div class="dropdown_menu">
-        <li><a href="tripindex.html" data-value="Itineraries">Itineraries</a></li>
-        <li><a href="recipesindex.html" data-value="Cuisine">Cuisine</a></li>
-        <li><a href="templates\gymindex.html" data-value="Workout">Workout</a></li>
-        <li><a href="#hero" class="action_btn" data-value="Landing Page">Landing Page</a></li>
+      <li><a href="tripindex.html" data-value="Itineraries">Itineraries</a></li>
+      <li><a href="/templates/recipesindex.html" data-value="Cuisine">Cuisine</a></li>
+      <li><a href="/templates/musicindex.html" data-value="Music">Music</a></li>
+      <li><a href="#hero" class="action_btn" data-value="Landing Page">Landing Page</a></li>
     </div>
 
-</header>
+  </header>
   <div class="container">
     <div class="pulse-effect" id="pulseEffect">
-      <img src="static\heart_2864298.png" alt="Heart" width="30" height="30">
+      <img src="{{ url_for('static', filename='gym_media/heart_2864298.png') }}" alt="Heart" width="30" height="30">
     </div>
     <video autoplay loop muted class="background-video">
-      <source src="static\They Don't Know Me Son _ David Goggins - Trim.mp4" type="video/mp4">
+      <source src="{{ url_for('static', filename='gym_media/They Dont Know Me Son _ David Goggins - Trim.mp4') }}"
+        type="video/mp4">
       Your browser does not support the video tag.
     </video>
     <div class="content">
@@ -100,13 +102,13 @@
     const dropDownMenu = document.querySelector('.dropdown_menu')
 
     toggleBtn.onclick = function () {
-        dropDownMenu.classList.toggle('open')
-        const isOpen = dropDownMenu.classList.contains('open')
-        toggleBtnIcon.classList = isOpen
-            ? 'fa-solid fa-xmark'
-            : 'fa-solid fa-bars'
+      dropDownMenu.classList.toggle('open')
+      const isOpen = dropDownMenu.classList.contains('open')
+      toggleBtnIcon.classList = isOpen
+        ? 'fa-solid fa-xmark'
+        : 'fa-solid fa-bars'
     }
-</script>
+  </script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       document.getElementById('submit-btn').addEventListener('click', function (event) {
@@ -120,48 +122,7 @@
       });
     });
   </script>
-  <script>
-    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-    // Add event listeners to all <a> elements inside <li> elements
-    document.querySelectorAll("li > a").forEach(link => {
-        // Initialize interval variable for each link
-        let interval = null;
-
-        // Add mouseover event listener to each link
-        link.addEventListener('mouseover', event => {
-            let iteration = 0;
-
-            // Clear any existing intervals to prevent multiple animations
-            clearInterval(interval);
-
-            // Start a new interval for the animation
-            interval = setInterval(() => {
-                // Modify the text content of the link during each iteration
-                event.target.innerText = event.target.innerText
-                    .split("")
-                    .map((letter, index) => {
-                        // Replace letters with corresponding letters from dataset value
-                        if (index < iteration) {
-                            return event.target.dataset.value[index];
-                        }
-
-                        // Randomly select letters if animation is still ongoing
-                        return letters[Math.floor(Math.random() * 26)];
-                    })
-                    .join("");
-
-                // Stop the animation when all letters have been replaced
-                if (iteration >= event.target.dataset.value.length) {
-                    clearInterval(interval);
-                }
-
-                // Increment the iteration counter for smoother animation
-                iteration += 1 / 3;
-            }, 40);
-        });
-    });
-</script>
+  <script src="{{ url_for('static', filename='js/hacked_text.js') }}"></script>
   <script>
     // Get reference to the pulse effect element
     const pulseEffect = document.getElementById('pulseEffect');

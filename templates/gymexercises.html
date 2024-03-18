@@ -5,12 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fetched Exercises</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='gymexercises.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/gymexercises.css') }}">
 </head>
 
 <body>
   <video autoplay loop muted class="background-video">
-    <source src="static\David Goggins Don t Be A B____.mp4" type="video/mp4">
+    <source src="{{ url_for('static', filename='gym_media/David Goggins Dont Be A B.mp4') }}" type="video/mp4">
     Your browser does not support the video tag.
   </video>
   <div id="exercise-header"></div>

@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     /* overflow: hidden;  Prevent scrollbars */
-    background-image: url('tripmedia/pexels-ena-marinkovic-3768083.jpg');
+    background-image: url('../tripmedia/pexels-ena-marinkovic-3768083.jpg');
     background-size: cover;
     background-position: center;
 }
@@ -57,8 +57,6 @@ body {
     /* Make the title bold */
     text-align: center;
     /* Center-align the title */
-
-
 }
 
 .note {

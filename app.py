@@ -2,13 +2,37 @@ from flask import Flask, request, jsonify, render_template
 
 import sqlite3
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 
 @app.route('/')
 def index():
+    return render_template('musicindex.html')
+
+@app.route('/templates/musicindex.html')
+def music_index():
+    return render_template('musicindex.html')
+
+@app.route('/templates/recipesindex.html')
+def recipes_index():
+    return render_template('recipesindex.html')
+
+@app.route('/templates/tripindex.html')
+def trip_index():
+    return render_template('tripindex.html')
+
+@app.route('/templates/romeindex.html')
+def rome_index():
+    return render_template('romeindex.html')
+
+@app.route('/templates/switzerlandindex.html')
+def switzerland_index():
+    return render_template('switzerlandindex.html')
+
+@app.route('/templates/gymindex.html')
+def gym_index():
     return render_template('gymindex.html')
 
-@app.route('/gymexercises.html')
+@app.route('/templates/gymexercises.html')
 def gym_exercises():
     return render_template('gymexercises.html')
 
