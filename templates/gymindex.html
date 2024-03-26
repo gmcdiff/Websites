@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+  <link rel="icon" type="image/x-icon" href="data:;base64,iVBORw0KGgo=">
 </head>
 
 <body>
@@ -34,7 +34,7 @@
       </div>
     </div>
     <div class="dropdown_menu">
-      <li><a href="tripindex.html" data-value="Itineraries">Itineraries</a></li>
+      <li><a href="/templates/tripindex.html" data-value="Itineraries">Itineraries</a></li>
       <li><a href="/templates/recipesindex.html" data-value="Cuisine">Cuisine</a></li>
       <li><a href="/templates/musicindex.html" data-value="Music">Music</a></li>
       <li><a href="#hero" class="action_btn" data-value="Landing Page">Landing Page</a></li>
@@ -52,46 +52,129 @@
     </video>
     <div class="content">
       <div class="intro-text">
-        <h1>Ditch the trainer</h1>
-        <p>Stay hard.</p>
+        <h1>Gym Wiki</h1>
+        <p>Explore exercises you never even thought existed</p>
       </div>
       <div class="selection-section">
         <div class="selection">
-          <label for="type">Type:</label>
-          <select id="type">
-            <option value="bodyweight">Bodyweight</option>
-            <option value="equipment">Equipment</option>
-          </select>
+          <details id="equipment">
+            <summary>Equipment</summary>
+            <form>
+              <fieldset>
+                <ul>
+                  <li>
+                    <label for="Bodyweight">Bodyweight</label>
+                    <input type="checkbox" id="Bodyweight" name="Bodyweight" value="Bodyweight" />
+                  </li>
+                  <li>
+                    <label for="Machine">Machine</label>
+                    <input type="checkbox" id="Machine" name="Machine" value="Machine" />
+                  </li>
+                  <li>
+                    <label for="Bands">Bands</label>
+                    <input type="checkbox" id="Bands" name="Bands" value="Bands" />
+                  </li>
+                  <li>
+                    <label for="Kettlebells">Kettlebells</label>
+                    <input type="checkbox" id="Kettlebells" name="Kettlebells" value="Kettlebells" />
+                  </li>
+                  <li>
+                    <label for="Dumbbell">Dumbbell</label>
+                    <input type="checkbox" id="Dumbbell" name="Dumbbell" value="Dumbbell" />
+                  </li>
+                  <li>
+                    <label for="Cable">Cable</label>
+                    <input type="checkbox" id="Cable" name="Cable" value="Cable" />
+                  </li>
+                  <li>
+                    <label for="Exercise Ball">Exercise Ball</label>
+                    <input type="checkbox" id="Exercise Ball" name="Exercise Ball" value="Exercise Ball" />
+                  </li>
+                  <li>
+                    <label for="Barbell">Barbell</label>
+                    <input type="checkbox" id="Barbell" name="Barbell" value="Barbell" />
+                  </li>
+                  <li>
+                    <label for="Foam roll">Foam roll</label>
+                    <input type="checkbox" id="Foam roll" name="Foam roll" value="Foam roll" />
+                  </li>
+                  <li>
+                    <label for="Stretching Mat">Stretching Mat</label>
+                    <input type="checkbox" id="Stretching Mat" name="Stretching Mat" value="Stretching Mat" />
+                  </li>
+                  <li>
+                    <label for="Plyos">Plyos</label>
+                    <input type="checkbox" id="Plyos" name="Plyos" value="Plyos" />
+                  </li>
+                </ul>
+              </fieldset>
+            </form>
+          </details>
         </div>
+
         <div class="selection">
-          <label for="area">Area:</label>
-          <select id="area">
-            <option value="chest-triceps">Chest/Triceps</option>
-            <option value="back-biceps">Back/Biceps</option>
-            <option value="legs">Legs</option>
-            <option value="abs">Core/Shoulders</option>
-            <option value="fullbody">Full Body</option>
-          </select>
+          <details id="area">
+            <summary>Muscle Group</summary>
+            <form>
+              <fieldset>
+                <ul>
+                  <!--
+                  <li>
+                    <label for="Full Body">Full Body</label>
+                    <input type="checkbox" id="Full Body" name="Full Body" value="Full Body" />
+                  </li>
+                  -->
+                  <li>
+                    <label for="Chest">Chest</label>
+                    <input type="checkbox" id="Chest" name="Chest" value="Chest" />
+                  </li>
+                  <li>
+                    <label for="Back">Back</label>
+                    <input type="checkbox" id="Back" name="Back" value="Back" />
+                  </li>
+                  <li>
+                    <label for="Legs">Legs</label>
+                    <input type="checkbox" id="Legs" name="Legs" value="Legs" />
+                  </li>
+                  <li>
+                    <label for="Triceps">Triceps</label>
+                    <input type="checkbox" id="Triceps" name="Triceps" value="Triceps" />
+                  </li>
+                  <li>
+                    <label for="Biceps">Biceps</label>
+                    <input type="checkbox" id="Biceps" name="Biceps" value="Biceps" />
+                  </li>
+                  <li>
+                    <label for="Shoulders">Shoulders</label>
+                    <input type="checkbox" id="Shoulders" name="Shoulders" value="Shoulders" />
+                  </li>
+                  <li>
+                    <label for="Abdominals">Abdominals</label>
+                    <input type="checkbox" id="Abdominals" name="Abdominals" value="Abdominals" />
+                  </li>
+                  <li>
+                    <label for="Calves">Calves</label>
+                    <input type="checkbox" id="Calves" name="Calves" value="Calves" />
+                  </li>
+                  <li>
+                    <label for="Forearms">Forearms</label>
+                    <input type="checkbox" id="Forearms" name="Forearms" value="Forearms" />
+                  </li>
+                  <li>
+                    <label for="Lats">Lats</label>
+                    <input type="checkbox" id="Lats" name="Lats" value="Lats" />
+                  </li>
+                  <li>
+                    <label for="Traps">Traps</label>
+                    <input type="checkbox" id="Traps" name="Traps" value="Traps" />
+                  </li>
+                </ul>
+              </fieldset>
+            </form>
+
+          </details>
         </div>
-        <!--
-        <div class="selection">
-          <label for="subarea">SubArea:</label>
-          <select id="subarea">
-            <option value="triceps">Triceps</option>
-            <option value="biceps">Biceps</option>
-            <option value="core">Core</option>
-            <option value="shoulders">Shoulders</option>
-            <option value="abs">Full Body</option>
-          </select>
-        </div> -->
-        <div class="selection">
-          <label for="level">Level:</label>
-          <select id="level">
-            <option value="beginner">Beginner</option>
-            <option value="intermediate">Intermediate</option>
-            <option value="advanced">Advanced</option>
-          </select>
-        </div>
+
         <button id="submit-btn">Workout</button>
       </div>
     </div>
@@ -113,12 +196,22 @@
     document.addEventListener('DOMContentLoaded', function () {
       document.getElementById('submit-btn').addEventListener('click', function (event) {
         // Collect selected values from dropdown menus
-        const type = document.getElementById('type').value;
-        const area = document.getElementById('area').value;
-        const level = document.getElementById('level').value;
+        const equipCheckboxes = document.querySelectorAll('#equipment input[type="checkbox"]:checked');
+        const equips = Array.from(equipCheckboxes).map(checkbox => checkbox.value);
+        const areaCheckboxes = document.querySelectorAll('#area input[type="checkbox"]:checked');
+        const areas = Array.from(areaCheckboxes).map(checkbox => checkbox.value);
+
+        // Check if both equipParams and areaParams are empty
+        if (equips.length === 0 && areas.length === 0) {
+          // Handle the case where no options are selected
+          alert('Please select your desired equipment and muscle group');
+          return; // Exit the function to prevent redirection
+        }
 
         // Redirect to a new page with the selected criteria as URL parameters
-        window.location.href = `\gymexercises.html?type=${type}&area=${area}&level=${level}`;
+        const equipParams = equips.length > 0 ? `equipment=${equips.join(',')}` : '';
+        const areaParams = areas.length > 0 ? `&area=${areas.join(',')}` : '';
+        window.location.href = `\gymexercises.html?${equipParams}${areaParams}`;
       });
     });
   </script>

@@ -134,12 +134,12 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  height: 100dvh;
+  justify-content: center; /* Vertical center alignment */
   /* Make section fill the screen */
   color: #fff;
   /* White */
   text-align: center;
-
 }
 
 .background-video {
@@ -154,41 +154,96 @@ header {
 }
 
 .content {
-  max-width: 800px;
   margin-top: auto;
   margin-bottom: auto;
 }
 
+
 .intro-text {
-  margin-bottom: 40px;
+  text-align: center; /* Align text in the center */
+  margin-bottom: 20px; /* Add some bottom margin */
+  
 }
 
 .selection-section {
   display: flex;
-  justify-content: center;
-  /* Horizontally center the items */
+  text-align: center;
+  flex-direction: column;
   align-items: center;
-  flex-wrap: wrap;
-  /* Allow items to wrap if they exceed the container width */
-
+  max-height: 250px; /* Set the maximum height */
+  width: 250px;
+  overflow-y: auto; /* Always show vertical scrollbar */
+  margin-left: 50px;
 }
+
 
 .selection {
-  margin-right: 20px;
-  /* Add margin-right to space out the buttons */
-
+  margin-bottom: 20px;
 }
 
-.selection label {
-  margin-right: 10px;
+summary{
+  margin-bottom: 5px;
 }
 
-.selection select {
-  padding: 8px;
-  border: 1px solid #ccc;
-  /* Light grey */
-  border-radius: 5px;
+/* Round border for open selection list */
+fieldset {
+  border-radius: 10px; /* Adjust the border-radius value as needed */
+  padding: 5px; /* Add padding to create space between content and border */
 }
+
+/* Custom Checkboxes and Radio Buttons */
+input[type="checkbox"],
+input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 16px; /* Adjust the width */
+  height: 16px; /* Adjust the height */
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  vertical-align: middle; /* Align vertically with the text */
+  transition: border-color 0.3s ease;
+}
+
+input[type="checkbox"]:checked,
+input[type="radio"]:checked {
+  border-color: #ffffff;
+  background-color: #5ca467;
+}
+
+input[type="checkbox"] + label,
+input[type="radio"] + label {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+/* Hover Effects */
+input[type="checkbox"]:hover,
+input[type="radio"]:hover {
+  border-color: #5ca467;
+}
+
+input[type="checkbox"]:checked:hover,
+input[type="radio"]:checked:hover {
+  border-color: #fff;
+}
+
+/* Animation for Checkboxes and Radio Buttons */
+input[type="checkbox"],
+input[type="radio"] {
+  position: relative;
+}
+
+
+
+input[type="checkbox"]:checked:before,
+input[type="radio"]:checked:before {
+  opacity: 1;
+}
+
 
 #submit-btn {
   padding: 10px 20px;
@@ -200,13 +255,13 @@ header {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-left: 20px;
+  
   /* Add margin-left to separate the submit button from the selection buttons */
 }
 
 #submit-btn:hover {
   background-color: #5ca467;
-  scale: 1.10;
+  /* scale: 1.10; */
 }
 
 #submit-btn:active{

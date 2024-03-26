@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify, render_template
-
+from itertools import product
 import sqlite3
 
 app = Flask(__name__, static_url_path='/static')
@@ -40,26 +40,46 @@ def gym_exercises():
 @app.route('/fetch_exercises', methods=['POST', 'GET'])
 def fetch_exercises():
     # Get selected values from the frontend
-    type_selected = request.args.get('type')
-    area_selected = request.args.get('area')
-    level_selected = request.args.get('level')
-
-    # Convert type, area, and level to lowercase
-    type_selected = type_selected.lower()
-    area_selected = area_selected.lower()
-    level_selected = level_selected.lower()
-
+    equip_selected = request.args.getlist('equipment')
+    area_selected = request.args.getlist('area')
+    print(equip_selected)
+    print(area_selected)
+    # Split comma-separated values within each element
+    equip_selected = [equip.split(',') for equip in equip_selected]
+    area_selected = [area.split(',') for area in area_selected]
+    print(equip_selected)
+    print(area_selected)
+    # Flatten the list of lists
+    equip_selected = [item for sublist in equip_selected for item in sublist]
+    area_selected = [item for sublist in area_selected for item in sublist]
+    print(equip_selected)
+    print(area_selected)
     # Establish connection to SQLite database
     conn = sqlite3.connect('workout.db')
     cursor = conn.cursor()
 
-    # Execute SELECT query based on selected criteria
-    cursor.execute("SELECT * FROM Exercises WHERE LOWER(type)=? AND REPLACE(LOWER(area), ' ', '')=? AND LOWER(level)=?", 
-                   (type_selected, area_selected, level_selected))
-    
+    # Create an empty list to store combinations
+    combinations = []
+
+    # Create combinations of equipment and area
+    combinations = list(product(equip_selected, area_selected))
+    print(combinations)
+    # Construct placeholders for parameters in the query
+    placeholders = ' OR '.join(['(Equipment = ? AND Bodypart = ?)'] * len(combinations))
+    print(placeholders)
+    # Construct the query
+    query = f"""
+    SELECT *
+    FROM Exercises
+    WHERE {placeholders}
+    """
+    print(query)
+    # Execute the query with parameters
+    cursor.execute(query, [item for sublist in combinations for item in sublist])
+
     # Fetch rows that match the criteria
     fetched_rows = cursor.fetchall()
-
+    print(fetched_rows)
     # Close the database connection
     conn.close()
 

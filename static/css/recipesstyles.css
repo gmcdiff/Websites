@@ -1,7 +1,6 @@
 body {
     height: 100dvh;
     background-color: #000;
-    background-image: url("https://wallpapercave.com/wp/wp9506513.jpg");
     background-size: cover;
     background-position: center;
     margin: 0;
@@ -195,12 +194,14 @@ section#hero {
 }
 
 .recipe img {
-    max-width: 100%;
-    border-radius: 5px;
-
-
-    height: 250px;
+    border-radius: 15px;
+    width: 100%;
+    /* Ensure the image fills the container */
+    height: 200px;
+    width: 200px;
+    /* Set a fixed height for consistency */
     object-fit: cover;
+    /* Maintain aspect ratio and fill the container */
 }
 
 .recipe h3 {
@@ -228,6 +229,25 @@ section#hero {
 }
 
 .cta-btn:active {
+    scale: 0.95;
+}
+
+.view-recipe-btn{
+    background-color: violet;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
+}
+
+.view-recipe-btn:hover {
+    background-color: darkviolet;
+    scale: 1.05;
+}
+
+.view-recipe-btn:active {
     scale: 0.95;
 }
 

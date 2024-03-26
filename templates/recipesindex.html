@@ -61,40 +61,40 @@
                 <h2>Menu Della Casa</h2>
                 <div class="recipes-grid">
                     <div class="recipe">
-                        <img src="destination1.jpg" alt="Recipe 1">
+                        <img src="https://assets.epicurious.com/photos/5988e3458e3ab375fe3c0caf/1:1/w_2560%2Cc_limit/How-to-Make-Chicken-Alfredo-Pasta-hero-02082017.jpg" alt="Recipe 1">
                         <h3>Recipe 1</h3>
                         <p>Description of Recipe 1</p>
-                        <a href="#" class="cta-btn">View Recipe</a>
+                        <a href="#" class="view-recipe-btn" id="view-recipe-btn">View Recipe</a>
                     </div>
                     <div class="recipe">
-                        <img src="destination1.jpg" alt="Recipe 1">
-                        <h3>Recipe 1</h3>
-                        <p>Description of Recipe 1</p>
-                        <a href="#" class="cta-btn">View Recipe</a>
+                        <img src="https://www.foodandwine.com/thmb/tAS-x_IC4ss1cb9EdDpsr0UExdM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/bucatini-with-mushroom-ragu-dandelion-greens-and-tarragon-FT-RECIPE0421-3a5f0d29f7264f5e9952d4a3a51f5f58.jpg" alt="Recipe 1">
+                        <h3>Recipe 2</h3>
+                        <p>Description of Recipe 2</p>
+                        <a href="#" class="view-recipe-btn" id="view-recipe-btn">View Recipe</a>
                     </div>
                     <div class="recipe">
-                        <img src="destination1.jpg" alt="Recipe 1">
-                        <h3>Recipe 1</h3>
-                        <p>Description of Recipe 1</p>
-                        <a href="#" class="cta-btn">View Recipe</a>
+                        <img src="https://www.foodandwine.com/thmb/c-MBu_vMHq3EcoN_KPxwg-oZjKo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Pasta-Aglio-E-Olio-2-FT-RECIPE0123-38cd2045646a4635a80e8166f085fc7e.jpg" alt="Recipe 1">
+                        <h3>Recipe 3</h3>
+                        <p>Description of Recipe 3</p>
+                        <a href="#" class="view-recipe-btn" id="view-recipe-btn">View Recipe</a>
                     </div>
                     <div class="recipe">
-                        <img src="destination1.jpg" alt="Recipe 1">
-                        <h3>Recipe 1</h3>
-                        <p>Description of Recipe 1</p>
-                        <a href="#" class="cta-btn">View Recipe</a>
+                        <img src="https://www.themediterraneandish.com/wp-content/uploads/2021/04/mushroom-pasta-recipe-8.jpg" alt="Recipe 1">
+                        <h3>Recipe 4</h3>
+                        <p>Description of Recipe 4</p>
+                        <a href="#" class="view-recipe-btn" id="view-recipe-btn">View Recipe</a>
                     </div>
                     <div class="recipe">
-                        <img src="destination1.jpg" alt="Recipe 1">
-                        <h3>Recipe 1</h3>
-                        <p>Description of Recipe 1</p>
-                        <a href="#" class="cta-btn">View Recipe</a>
+                        <img src="https://theplantbasedschool.com/wp-content/uploads/2022/04/Aglio-olio-1-1.jpg" alt="Recipe 1">
+                        <h3>Recipe 5</h3>
+                        <p>Description of Recipe 5</p>
+                        <a href="#" class="view-recipe-btn" id="view-recipe-btn">View Recipe</a>
                     </div>
                     <div class="recipe">
-                        <img src="destination1.jpg" alt="Recipe 1">
-                        <h3>Recipe 1</h3>
-                        <p>Description of Recipe 1</p>
-                        <a href="#" class="cta-btn">View Recipe</a>
+                        <img src="https://www.twopeasandtheirpod.com/wp-content/uploads/2022/06/One-Pot-Sausage-Pasta-7.jpg" alt="Recipe 1">
+                        <h3>Recipe 6</h3>
+                        <p>Description of Recipe 6</p>
+                        <a href="#" class="view-recipe-btn" id="view-recipe-btn">View Recipe</a>
                     </div>
 
                     <!-- Add more destinations as needed -->
@@ -148,6 +148,21 @@
         </div>
     </main>
     <script src="{{ url_for('static', filename='js/hacked_text.js') }}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          // Get the "View Recipe" button by its ID
+          const viewRecipeBtn = document.getElementById('view-recipe-btn');
+      
+          // Add event listener to the button
+          viewRecipeBtn.addEventListener('click', function (event) {
+            // Prevent the default behavior of the anchor tag (i.e., navigating to the href)
+            event.preventDefault();
+            console.log('Button clicked!'); // Check if this message appears in the console
+            // Show an alert with the message "To be added soon"
+            alert('Recipe to be added!');
+          });
+        });
+      </script>
     <script>
         const toggleBtn = document.querySelector('.toggle_btn')
         const toggleBtnIcon = document.querySelector('.toggle_btn i')

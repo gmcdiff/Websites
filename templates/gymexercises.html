@@ -16,68 +16,45 @@
   <div id="exercise-header"></div>
   <div id="exercise-list"></div>
   <script>
-    // Extract URL parameters
-    const params = new URLSearchParams(window.location.search);
-    const type = params.get('type');
-    const area = params.get('area');
-    const level = params.get('level');
+    // Function to extract parameters from URL
+    function getUrlParams() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const params = {};
+      for (const [key, value] of urlParams) {
+        params[key] = value.split(','); // Split comma-separated values
+      }
+      return params;
+    }
+    const url = window.location.href;
+    const params = getUrlParams(url);
+    // Function to fetch exercises from Flask app
+    function fetchExercises() {
 
-    function capitalizeFirstLetter(string) {
-      return string.charAt(0).toUpperCase() + string.slice(1);
+      fetch(`/fetch_exercises?equipment=${params['equipment']}&area=${params['area']}`)
+        .then(response => response.json())
+        .then(data => {
+          // Process returned exercises and display them
+          const exerciseHeader = document.getElementById('exercise-header');
+          const exerciseList = document.getElementById('exercise-list');
+          exerciseHeader.innerHTML = `<span style="font-size: larger">(3x10ea) ${params['area']} workout with ${params['equipment']}</span> <br> <br> <strong>[Name, Type, Area, Equipment, Fitness Level]</strong>`;
+          exerciseList.innerHTML = ''; // Clear previous content
+          data.exercises.forEach(exercise => {
+            const exerciseItem = document.createElement('div');
+            exerciseItem.textContent = exercise;
+            exerciseList.appendChild(exerciseItem);
+            exerciseList.appendChild(document.createElement('br'));
+          });
+        })
+        .catch(error => {
+          console.error('Error fetching exercises:', error);
+        });
     }
 
-    // Fetch exercises based on the criteria
-    fetch(`/fetch_exercises?type=${type}&area=${area}&level=${level}`)
-      .then(response => response.json())
-      .then(data => {
-        const exercises = data.exercises; // Define exercises within the scope
-        console.log(exercises);
-        if (exercises.length === 0) {
-          console.log('No exercises found.'); // Log a message if no exercises are returned
-        } else {
-          // Display fetched exercises on the page
-          const exerciseHeader = document.getElementById('exercise-header');
-          const exerciseList = document.getElementById('exercise-list')
-          // Display type - area - level details at the top
-          exerciseHeader.textContent = `(3x10ea) ${capitalizeFirstLetter(level)} ${area} workout with ${type}`;
 
-
-          // Create a single div for all exercises
-          //const exercisesContainer = document.createElement('div');
-
-          // Iterate over each exercise
-          exercises.forEach(exercise => {
-            // Create a div element for each exercise
-
-            // Extract exercise details from the array
-            const name = exercise[0];
-            const link = exercise[4].split('Info: ')[1]; // Extract the link from the fifth element
-
-            // Create a span element for the exercise name
-            const exerciseName = document.createElement('span');
-            exerciseName.textContent = name;
-
-            // Create an anchor element for the exercise link
-            const exerciseLink = document.createElement('a');
-            exerciseLink.href = link;
-            exerciseLink.textContent = 'Tutorial'; // You can customize the text here if needed
-
-            /// Append the name and link elements to the container
-            exerciseList.appendChild(exerciseName);
-            exerciseList.appendChild(document.createTextNode(' - ')); // Add separator
-            exerciseList.appendChild(exerciseLink);
-
-            // Add a line break between exercises
-            exerciseList.appendChild(document.createElement('br'));
-
-
-          });
-          // Add the list container to the document body
-
-        }
-      })
-      .catch(error => console.error('Error fetching exercises:', error));
+    // Call fetchExercises when the page loads
+    window.onload = fetchExercises;
   </script>
+
 </body>
 
 </html>
